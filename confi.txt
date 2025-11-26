@@ -1,0 +1,47 @@
+{
+  intents [
+    {
+      displayName AskQuestion,
+      priority 500000,
+      webhookUsed true,
+      webhookForSlotFilling false,
+      trainingPhrases [
+        What is the NCSC,
+        Tell me about FADP compliance,
+        How do I report a cyber attack,
+        What are the latest threats,
+        Explain FINMA circular 20231,
+        Who needs to report incidents,
+        Is there a deadline for reporting,
+        Summarize the cyber strategy
+      ],
+      responses [] 
+    },
+    {
+      displayName GetCirculars,
+      priority 500000,
+      webhookUsed true,
+      webhookForSlotFilling false,
+      trainingPhrases [
+        Download circulars,
+        Get reports,
+        Show me PDF documents,
+        I need the NCSC report,
+        Latest compliance docs
+      ],
+      responses []
+    },
+    {
+      displayName Default Welcome Intent,
+      priority 500000,
+      webhookUsed true, 
+      events [{name WELCOME}],
+      trainingPhrases [
+        Hi,
+        Hello,
+        Gruezi,
+        Start
+      ]
+    }
+  ]
+}
