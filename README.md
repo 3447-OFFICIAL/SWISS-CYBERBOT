@@ -38,7 +38,7 @@ python dialogflow_webhook.py
 **Expected Output:**
 
 ```
- * Running on http://127.0.0.1:5000
+ Running on http://127.0.0.1:5000
 ```
 
 This confirms that the backend service is operational.
@@ -156,9 +156,6 @@ This architecture enables:
 * Cloud deployment (Render / AWS / GCP)
 
 ---
-```
-```
-
 
 
 
