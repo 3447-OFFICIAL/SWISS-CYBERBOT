@@ -1,137 +1,163 @@
+
 # Swiss CyberBot – Project Guide
 
-Swiss CyberBot represents a strategic integration of conversational AI with regulatory intelligence, enabling seamless access to Swiss cybersecurity laws, circulars, and threat insights. The solution leverages a Python Flask backend orchestrated with a Dialogflow ES conversational frontend, ensuring a scalable, cloud-ready engagement layer.
+Swiss CyberBot delivers an integrated conversational interface for accessing Swiss cybersecurity regulations, circulars, and threat intelligence. The platform aligns a Python Flask service with a Dialogflow ES agent, enabling a streamlined, scalable, and cloud-ready interaction model.
 
 ---
 
 ## 📁 Project Structure
 
+```
+
 SwissCyberBot/
 │
-├── dialogflow_webhook.py # Primary backend service (Flask)
-├── intents.json # Reference configuration for Dialogflow intents
+├── dialogflow_webhook.py      # Primary backend service (Flask)
+├── intents.json               # Dialogflow intent reference configuration
 └── README.md
 
-yaml
-Copy code
+````
 
 ---
 
-## 🛠️ Step 1: Local Backend Deployment
+## 🛠️ Step 1: Local Backend Setup
 
 ### ✅ Install Dependencies
 
-Ensure that Python and pip are operational within your environment, then execute:
+Ensure Python and pip are configured, then execute:
 
 ```bash
 pip install flask requests beautifulsoup4 google-generativeai
-✅ Launch the Backend Service
-Run the webhook service locally:
-```
+````
+
+### ✅ Start the Server
+
 ```bash
-Copy code
 python dialogflow_webhook.py
-Expected Output:
 ```
-```csharp
-Copy code
+
+**Expected Output:**
+
+```
  * Running on http://127.0.0.1:5000
-This confirms backend readiness.
 ```
-🌐 Public Exposure via ngrok
-To enable Dialogflow connectivity, expose the local server:
+
+This confirms that the backend service is operational.
+
+---
+
+### 🌐 Expose to Internet (ngrok)
+
+Open a second terminal and run:
 
 ```bash
-Copy code
 ngrok http 5000
-Copy the generated HTTPS tunnel URL, for example:
 ```
-```cpp
-Copy code
+
+Copy the HTTPS URL generated, such as:
+
+```
 https://1234abcd.ngrok-free.app
-🤖 Step 2: Dialogflow ES Configuration
-Navigate to the Dialogflow Console
 ```
-Create a new agent:
 
-nginx
-Copy code
+---
+
+## 🤖 Step 2: Dialogflow Configuration
+
+1. Access the Dialogflow Console
+2. Create an agent named:
+
+```
 SwissCyberBot
-Enable Webhook Integration:
+```
 
-Go to Fulfillment
+3. Enable webhook functionality:
 
-Toggle Webhook to Enabled
+   * Navigate to **Fulfillment**
+   * Toggle **Webhook** to *Enabled*
+   * Paste the ngrok URL followed by:
 
-Paste the ngrok URL suffixed with /webhook, e.g.:
+```
+/webhook
+```
 
-arduino
-Copy code
+Example:
+
+```
 https://1234abcd.ngrok-free.app/webhook
-Click Save to operationalize the connection
+```
 
-🧠 Step 3: Intent Configuration (Manual Setup)
-Utilize intents.json as the authoritative reference for intent modeling.
+4. Click **Save**
 
-Intent Name	Sample Training Phrases	Fulfillment
-AskQuestion	"What is FADP?", "Report incident", "Latest threats"	Webhook
-GetCirculars	"Download PDFs", "Get reports", "Compliance docs"	Webhook
-Default Welcome Intent	"Hi", "Hello", default greetings	Webhook
+---
 
-Critical Requirement:
-For every intent configured, navigate to the bottom of the intent configuration page and activate:
+## 🧠 Step 3: Intent Setup (Manual)
 
-kotlin
-Copy code
+Use `intents.json` as the reference blueprint.
+
+| Intent Name            | Training Phrase Examples                             | Fulfillment |
+| ---------------------- | ---------------------------------------------------- | ----------- |
+| AskQuestion            | "What is FADP?", "Report incident", "Latest threats" | Webhook     |
+| GetCirculars           | "Download PDFs", "Get reports", "Compliance docs"    | Webhook     |
+| Default Welcome Intent | "Hi", "Hello"                                        | Webhook     |
+
+> **Important:**
+> For each intent, scroll to the bottom of the intent configuration page and check:
+
+```
 Enable webhook call for this intent
-This ensures backend orchestration.
+```
 
-✅ Step 4: Validation & Testing
-Utilize the "Try it now" simulator within Dialogflow.
+---
 
-🔍 Expected Behaviors
+## ✅ Step 4: Testing
+
+Use the **Try it now** panel in Dialogflow.
+
+### Expected Results
+
 Query:
 
-csharp
-Copy code
+```
 What is the NCSC?
+```
+
 Outcome:
 
-AI-generated definition retrieved from backend
+* AI-generated definition response
 
 Query:
 
-sql
-Copy code
+```
 Get circulars
+```
+
 Outcome:
 
-List of downloadable PDF regulatory documents
+* List of PDF regulatory documents
 
-🚀 Strategic Value Proposition
-This architecture establishes:
+---
 
-A modular backend service layer
+## 🚀 Value Proposition
 
-Cloud-routable conversational interfaces
+This architecture enables:
 
-Scalable AI-driven knowledge delivery
+* Modular backend orchestration
+* Cloud-ready conversational engagement
+* AI-driven regulatory intelligence delivery
+* Rapid deployment capability
 
-Rapid deployment enablement for cybersecurity inquiry automation
+---
 
-📌 Next Steps (Optional Enhancements)
-Persistent storage integration
+## 📌 Optional Enhancements
 
-Authentication layer
+* Database integration
+* Authentication and access control
+* Multi-language support
+* Cloud deployment (Render / AWS / GCP)
 
-Multi-language conversational support
-
-Cloud hosting (Render / AWS / GCP)
-
-© Swiss CyberBot
-Enterprise-grade conversational access to Swiss cybersecurity intelligence.
-
-Copy code
+---
+```
+```
 
 
 
