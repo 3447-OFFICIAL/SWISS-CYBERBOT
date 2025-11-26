@@ -9,7 +9,7 @@ import google.generativeai as genai
 app = Flask(__name__)
 
 # 🔑 API KEY (Uses the one from your previous context)
-HARDCODED_API_KEY = "AIzaSyAZedPxlmgEhquH3rUfBdZk6X0DC4GlQ_o"
+HARDCODED_API_KEY = "YOUR_API_KEY"
 genai.configure(api_key=HARDCODED_API_KEY)
 
 # 🌐 TARGET URL
@@ -134,4 +134,5 @@ if __name__ == '__main__':
     # Initialize data
     scrape_website_on_start()
     # Run server
+
     app.run(debug=True, port=5000)
